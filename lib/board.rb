@@ -1,5 +1,7 @@
 class Board
 
+	attr_accessor :grid_hash
+
 	def initialize
 		@personal = create_grid
 		@tracking = create_grid	
@@ -14,18 +16,14 @@ class Board
 	end
 
 	def create_grid(x=10,y=10)
-		@hash = {}
+		@grid_hash = {}
   	(1..x).each do |a|
     	(1..y).each do |b|
-      @hash["#{(a+64).chr}#{b}".to_sym] = nil
+      @grid_hash["#{(a+64).chr}#{b}".to_sym] = nil
     	end
   	end
 	end
 	
-	def grid
-		@hash
-	end
-
 end
 
 

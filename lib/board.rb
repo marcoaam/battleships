@@ -28,7 +28,7 @@ class Board
 
 	def vertical(ship, coordinates)
 		first_letter, last_letter = coordinates.chars.first, coordinates.chars.last.to_i
-		(0...ship.length).map { |number| first_letter + (last_letter + number) }
+		(0...ship.length).map { |number| first_letter + (last_letter + number).to_s }
 	end
 	
 end

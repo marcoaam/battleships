@@ -22,13 +22,13 @@ class Board
 	end
 
 	def horizontal(ship, coordinates)
-		first_letter, last_letter = coordinates.chars.first, coordinates.chars.last
-		(0...ship.length).map { |number| (first_letter.bytes.first + number).chr + last_letter }
+		coordinate_letter, coordinate_number = coordinates.chars.first, coordinates.chars.last
+		(0...ship.length).map { |number| (coordinate_letter.bytes.first + number).chr + coordinate_number }
 	end
 
 	def vertical(ship, coordinates)
-		first_letter, last_letter = coordinates.chars.first, coordinates.chars.last.to_i
-		(0...ship.length).map { |number| first_letter + (last_letter + number).to_s }
+		coordinate_letter, coordinate_number = coordinates.chars.first, coordinates.chars.last.to_i
+		(0...ship.length).map { |number| coordinate_letter + (coordinate_number + number).to_s }
 	end
 	
 end

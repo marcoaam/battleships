@@ -21,7 +21,7 @@ describe Board do
   end
 
   it 'it can determine the horizontal coordinates providing a ship length and start coordinate' do
-    ship = double :ship, length: 2
+    ship = double :shsip, length: 2
     coorinates = "B1"
     expect(board.horizontal(ship, coorinates)).to eq ["B1", "C1"]
   end

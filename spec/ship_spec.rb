@@ -3,6 +3,7 @@ require 'ship'
 describe Ship do
 
 	let(:ship) { Ship.new }
+
   it 'is not sunk when created' do
   	ship = Ship.new
   	expect(ship).not_to be_sunk
@@ -51,4 +52,5 @@ describe Ship do
   	patrol_boat = Ship.patrol
   	expect(patrol_boat.length).to eq 2
   end
+  
 end

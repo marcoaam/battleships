@@ -1,24 +1,26 @@
+require './lib/cell'
+
 class Board
 
-	attr_accessor :grid
+	attr_accessor :grid_hash, :tracking, :personal
 
 	def initialize(x=10, y=10)
-	  @grid = create_grid(x,y)
+		@personal = create_grid(x,y)
+		@tracking = create_grid(x,y)
 	end
 
 	def create_grid(x=10,y=10)
-		@grid = {}
+		@grid_hash = {}
   	(1..x).each do |letter_number|
     	(1..y).each do |number|
-      @grid["#{(letter_number+64).chr}#{number}"] = nil
+      @grid_hash["#{(letter_number+64).chr}#{number}"] = Cell.new
     	end
   	end
-  	@grid
 	end
 
-	def coordinates_to_take(ship, coordinates, orientation = 'h')
-		return horizontal(ship, coordinates) if orientation == 'h'
-		vertical(ship, coordinates)
+	def get_coordinates_for(ship, starting_on: coordinates, running: 'horizontal')
+		return horizontal(ship, starting_on) if running == 'horizontal'
+		vertical(ship, starting_on)
 	end
 
 	def horizontal(ship, coordinates)
@@ -30,9 +32,10 @@ class Board
 		coordinate_letter, coordinate_number = coordinates.chars.first, coordinates.chars.last.to_i
 		(0...ship.length).map { |number| coordinate_letter + (coordinate_number + number).to_s }
 	end
-
-	def place(ship, coordinates, orientation='h')
-		(coordinates_to_take(ship,coordinates)).each { |ship_coordinate| @grid.each { |coordinate, value| @grid[coordinate] = ship if coordinate == ship_coordinate}}
-	end
 	
+	def place(ship, coordinates, orientation)
+		get_coordinates_for(ship, starting_on: coordinates, running: orientation).each do |coordinate|
+			grid_hash[coordinate].content = ship
+		end
+	end
 end

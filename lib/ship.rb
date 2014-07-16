@@ -1,6 +1,10 @@
+class Hit
+end
+
 class Ship
 
 	attr_reader :number_of_hits, :length
+	attr_accessor :position
 
 	DEFAULT_LENGTH = 2
 
@@ -9,11 +13,16 @@ class Ship
 		@length = options.fetch(:length, DEFAULT_LENGTH)
 	end
 
+	def attack!
+		take_a_hit
+		Hit.new
+	end
+
 	def sunk?
 		number_of_hits == length
 	end
 
-	def hit
+	def take_a_hit
 		@number_of_hits += 1
 	end
 

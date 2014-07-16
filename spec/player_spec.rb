@@ -2,10 +2,10 @@ require 'player'
 
 describe Player do
 
-let (:player) {Player.new(name: "Michiel")}
+	let(:player) { Player.new(name: 'Michiel') }
 
 	it 'has a name' do
-		expect(player.name).to eq "Michiel"
+		expect(player.name).to eq 'Michiel'
 	end
 
 	it 'expect the player to have a board' do
@@ -46,4 +46,5 @@ let (:player) {Player.new(name: "Michiel")}
 		player.place(coordinate,orientation)
 		expect(player.ships.count).to eq 3
 	end
+	
 end

@@ -7,7 +7,7 @@ class Player
 	attr_accessor :ships
 
 	def initialize(option = {})
-		@ships = [carrier = Ship.carrier, battleship= Ship.battleship, submarine= Ship.submarine, patrol= Ship.patrol]
+		@ships = [ carrier = Ship.carrier, battleship = Ship.battleship, submarine = Ship.submarine, patrol = Ship.patrol ]
 		@board = Board.new
 		@name = option.fetch(:name, "player1")
 	end

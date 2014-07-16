@@ -38,4 +38,11 @@ class Board
 			grid_hash[coordinate].content = ship if grid_hash.include?(coordinate)
 		end
 	end
+
+	def attacked_at(coordinate)
+		grid_hash[coordinate].attack!
+	end
+
 end
+
+#

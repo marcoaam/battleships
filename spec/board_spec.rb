@@ -53,4 +53,10 @@ describe Board do
     expect(board.grid_hash["B1"].content).to be ship
   end
 
+  it 'can record an attack into the grid cells' do
+    coordinate = "A1"
+    board.attacked_at(coordinate)
+    expect(board.grid_hash[coordinate].content).to be_an_instance_of Miss
+  end
+
 end

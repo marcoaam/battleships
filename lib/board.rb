@@ -35,7 +35,7 @@ class Board
 	
 	def place(ship, coordinates, orientation)
 		get_coordinates_for(ship, starting_on: coordinates, running: orientation).each do |coordinate|
-			grid_hash[coordinate].content = ship
+			grid_hash[coordinate].content = ship if grid_hash.include?(coordinate)
 		end
 	end
 end

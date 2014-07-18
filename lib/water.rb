@@ -1,4 +1,5 @@
 require './lib/miss'
+
 class Water
 
 	def attack!

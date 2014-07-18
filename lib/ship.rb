@@ -1,5 +1,4 @@
-class Hit
-end
+require_relative 'hit'
 
 class Ship
 

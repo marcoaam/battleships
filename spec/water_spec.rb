@@ -6,4 +6,5 @@ describe Water do
 	 	water = Water.new
 	 	expect(water.attack!).to be_an_instance_of Miss
 	end
+	
 end

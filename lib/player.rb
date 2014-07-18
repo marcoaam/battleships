@@ -1,25 +1,23 @@
-require './lib/board'
-require './lib/ship'
+require_relative 'board'
+require_relative 'ship'
 
 class Player
 
 	attr_reader :name, :board
 	attr_accessor :ships
 
-	def initialize(option = {})
-		@ships = [ carrier = Ship.carrier, battleship = Ship.battleship, submarine = Ship.submarine, patrol = Ship.patrol ]
-		@board = Board.new
-		@name = option.fetch(:name, "player1")
+	def initialize( name, board, ships)
+		@ships = ships
+		@board = board
+		@name = name 
 	end
 
-	def shoot_at(player, coordinate)
-		player.board.attacked_at(coordinate) 
+	def shoot_at(opponent, coordinate)
+		opponent.board.attacked_at(coordinate)
 	end
 
-	def place(coordinate, orientation)
-		ship = @ships.pop
+	def place(ship, coordinate, orientation)
 		board.place(ship, coordinate, orientation)
 	end
 
 end
-

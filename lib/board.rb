@@ -1,4 +1,5 @@
 require './lib/cell'
+require 'terminal-table'
 
 class Board
 
@@ -47,12 +48,18 @@ class Board
 		grid[coordinate].attack!
 	end
 
+	def print_table(player)
+		contents = player.board.grid.values.map {|cell| cell.content.class.name }.each_slice(10).to_a
+		indexed_rows = []
+		contents.each_with_index do |row, index|
+			indexed_rows << [index+1] + row
+		end
+		table = Terminal::Table.new :title => "THIS IS SPARTA!!!!! BATTLESHIPS!!!!", :headings => [' ','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], :rows => indexed_rows
+		puts table
+	end
 
-
-
-
-
-
-
+	def ships_remaining
+		grid.values.map(&:content).select{|item| item.is_a?(Ship)}.uniq.count
+	end
 
 end

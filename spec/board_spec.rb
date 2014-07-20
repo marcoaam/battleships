@@ -54,4 +54,11 @@ describe Board do
     expect(board.grid[coordinate].content).to be_an_instance_of Miss
   end
 
+  it 'counts the ships left in the grid' do
+    ship = double :ship, length: 5, is_a?: Ship
+    coordinates = "A1"
+    running = 'horizontal'
+    board.place(ship, coordinates, running)
+    expect(board.ships_remaining).to eq 1
+  end
 end

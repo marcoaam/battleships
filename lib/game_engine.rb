@@ -54,11 +54,8 @@ class Game
 		select_ship_to_be_placed(player1)
 		@player2 = new_player
 		select_ship_to_be_placed(player2)
+		run
 	end
-
-	# def place_ships(player)
-	# 	player.place(select_ship_to_be_placed(player), coordinate, orientation)
-	# end
 
 	def select_ship_to_be_placed(player)
 		until player.ships.empty? do
@@ -73,5 +70,19 @@ class Game
 		player.ships.delete(ship_name)
 	end
 
+	def run
+		until player1.board.ships_remaining == 0 || player2.board.ships_remaining == 0
+		 	player1.board.print_table(player2)
+		 	prints_msg_to(player1)
+		 	player1.shoot_at(player2, get_coordinates)
+		 	player2.board.print_table(player1)
+		 	prints_msg_to(player2)
+		 	player2.shoot_at(player1, get_coordinates)
+		end
+	end
+
+	def prints_msg_to(player)
+		puts "#{player.name} enter the coordinate you want to attack!!!"
+	end
 
 end

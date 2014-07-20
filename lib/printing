@@ -4,34 +4,15 @@ require ‘./lib/board’
 
 board = Board.new
 board.grid.values.first
-rows = board.grid.values.map{|cell| cell.content.class.name}.each_slice(10).to_a
-table = Terminal::Table.new :rows => rows
-puts table
-
-table = Terminal::Table.new :headings => ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], :rows => row
-
-
-———————————————————————————————
-Adding Numbers to the side
-———————————————————————————————
-
 
 contents = player.board.grid.values.map {|cell| cell.content.class.name }.each_slice(10).to_a 
 
 indexed_rows = []
 
 contents.each_with_index do |row, index|
-indexed_rows << [index+1] + row
+	indexed_rows << [index+1] + row
 end 
 
-indexed_rows
-
-table = Terminal::Table.new :headings => [' ','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], :rows => indexed_rows
+table = Terminal::Table.new :title => "THIS IS SPARTA!!!!! BATTLESHIPS!!!!", :headings => [' ','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], :rows => indexed_rows
 
 puts table
-
-
-———————————————————————————————
-Printing title
-———————————————————————————————
-table = Terminal::Table.new :title => "THIS IS SPARTA!!!!! BATTLESHIPS!!!!", :headings => [' ','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], :rows => indexed_rows

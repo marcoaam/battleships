@@ -11,4 +11,5 @@ class Cell
 	def attack!
 		@content = @content.attack!
 	end
+	
 end
